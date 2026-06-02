@@ -72,7 +72,7 @@ coproc event_queue {
                 ER=${EPOCHREALTIME/.}
                 [[ -n $event ]] && { [[ -v queue[$event] ]] || queue[$event]=$ER; }
                 if ((ER - ET > LT)); then
-                    for event in ${!queue[@]}; do
+                    for event in "${!queue[@]}"; do
                         if ((ER - ${queue[$event]} > LT)); then
                             echo "declare -A queue=([$event]=${queue[$event]})"; unset queue[$event]
                         fi
